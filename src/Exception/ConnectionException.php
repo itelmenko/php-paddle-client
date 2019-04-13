@@ -1,6 +1,6 @@
 <?php
 
-namespace Paddle\Client;
+namespace Paddle\Exception;
 
 class ConnectionException extends \Exception
 {

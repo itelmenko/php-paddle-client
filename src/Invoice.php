@@ -9,6 +9,11 @@ class Invoice {
      */
     protected $data = [];
 
+    public function setProductId(int $productId) {
+        $this->data['product_id'] = $productId;
+        return $this;
+    }
+
     public function setPassthrough(string $value) {
         $this->data['passthrough'] = $value;
         return $this;
@@ -26,7 +31,7 @@ class Invoice {
     }
 
     public function setExpires(int $timestamp) {
-        $this->data['expires'] = $timestamp;
+        $this->data['expires'] = date("Y-m-d", $timestamp);
         return $this;
     }
 

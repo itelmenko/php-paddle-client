@@ -14,6 +14,6 @@ class Price {
     }
 
     public function __toString() {
-        return "{$this->amount}:{$this->currency}";
+        return "{$this->currency}:{$this->amount}";
     }
 }
