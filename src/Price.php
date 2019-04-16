@@ -2,6 +2,10 @@
 
 namespace Paddle;
 
+/**
+ * Class Price
+ * @package Paddle
+ */
 class Price {
 
     protected $amount = 0;

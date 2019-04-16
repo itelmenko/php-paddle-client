@@ -2,6 +2,10 @@
 
 namespace Paddle;
 
+/**
+ * Class Currency
+ * @package Paddle
+ */
 class Currency {
 
     protected $code;

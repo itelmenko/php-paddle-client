@@ -2,14 +2,20 @@
 
 namespace Paddle;
 
+/**
+ * Class Client
+ * @package Paddle
+ */
 class Client {
 
     /**
+     * Your Paddle Vendor/Account ID
      * @var string
      */
     protected $vendorId;
 
     /**
+     * Your Paddle code/token for authenticating with the API
      * @var string
      */
     protected $vendorAuthCode;
@@ -22,11 +28,17 @@ class Client {
     const HTTP_METHOD_POST = 'POST';
 
 
+    /**
+     * @param $id
+     */
     public function setVendorId($id)
     {
         $this->vendorId = $id;
     }
 
+    /**
+     * @param $authCode
+     */
     public function setVendorAuthCode($authCode)
     {
         $this->vendorAuthCode = $authCode;
@@ -86,8 +98,11 @@ class Client {
         return $apiResult->response;
     }
 
-        /**
-     * @inheritdoc
+    /**
+     * Implementation for https://paddle.com/docs/api-custom-checkout/
+     * @param Invoice $invoice
+     * @return mixed
+     * @throws Exception\PaddleException
      */
     public function createPaymentUrl(Invoice $invoice)
     {
