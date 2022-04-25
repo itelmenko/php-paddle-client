@@ -21,8 +21,8 @@ class Client {
     protected $vendorAuthCode;
 
     protected $timeout = 30;
-    protected $baseUrl = 'https://vendors.paddle.com/api/';
     protected $apiVersion = '2.0';
+    protected $sandboxMode = false;
 
     const HTTP_METHOD_GET = 'GET';
     const HTTP_METHOD_POST = 'POST';
@@ -42,6 +42,16 @@ class Client {
     public function setVendorAuthCode($authCode)
     {
         $this->vendorAuthCode = $authCode;
+    }
+
+    public function setSandboxMode(bool $sandbox)
+    {
+        $this->sandboxMode = $sandbox;
+    }
+
+    private function getBaseUrl(): string
+    {
+        return $this->sandboxMode ? 'https://sandbox-vendors.paddle.com/api/' : 'https://vendors.paddle.com/api/';
     }
 
     /**
@@ -64,8 +74,9 @@ class Client {
         $parameters['vendor_auth_code'] = $this->vendorAuthCode;
 
         $method = strtoupper($method);
+
         $client = new \GuzzleHttp\Client([
-            'base_uri' => $this->baseUrl.$this->apiVersion.'/',
+            'base_uri' => $this->getBaseUrl().$this->apiVersion.'/',
             'timeout' => $this->timeout
         ]);
 
