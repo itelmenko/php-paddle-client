@@ -55,6 +55,16 @@ class Invoice {
     }
 
     /**
+     * A URL for webhooks.
+     * @param string $url
+     * @return $this
+     */
+    public function setWebHookUrl(string $url) {
+        $this->data['webhook_url'] = $url;
+        return $this;
+    }
+
+    /**
      * Pre-fills the Quantity selector on the checkout.
      * @param int $count
      * @param bool $variable Specifies if the user is allowed to alter the quantity of the checkout, accepts 0 or 1 (default: 1).
